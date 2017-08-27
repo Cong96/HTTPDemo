@@ -1,0 +1,10 @@
+那么我们getSession()方法是怎么判断Session是存在的呢？
+其实Session的实现原理是基于Cookie的技术实现的，
+每次我们在创建一个session的时候，都会有一个对应的sessionid，然后会将这个sessionid信息写入到cookie中，
+但是这个cookie的有效时间是这个浏览器进程中，即这个cookie是在服务器的内存中的，
+不会回写给客户机缓存到磁盘中。
+所以我们会在一个浏览器中使用同一个session的，当我们关闭浏览器的时候，
+这个cookie就被销毁了，那么sessionid就没有了，
+当我们在打开浏览器的时候，服务端又会重新创建一个session。
+所以我们会误认为session的生命周期是浏览器进程。
+当用户关闭了浏览器虽然session cookie已经消失，但session对象仍然保存在服务器端 

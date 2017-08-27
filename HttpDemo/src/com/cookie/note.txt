@@ -1,0 +1,6 @@
+Cookie是客户端技术
+服务器把每个用户的数据以cookie的形式写给用户各自的浏览器
+response.addCookie();
+当用户使用浏览器再去访问服务器中的web资源时，就会带着各自的数据去。这样，web资源处理的就是用户各自的数据了
+request.getCookie();
+Cookie的name是不能重复的，一但重复便被覆盖。

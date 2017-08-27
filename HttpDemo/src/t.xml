@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hezhong>
+	<trans-cate>5</trans-cate>
+	<trans-source>5</trans-source>
+	<trans-time>2016-09-18 12:16:35</trans-time>
+	<order-no>zmE1509171217111122</order-no>
+	<gate-way>8</gate-way>
+	<sign>d6750fec9c229d48e129fc14ae452fad</sign>
+	<policy>
+		<plan-validate>2016-09-26</plan-validate>
+		<plan-no>229</plan-no>
+		<charge-period>2</charge-period>
+		<charge-year>10</charge-year>
+		<coverage-period>2</coverage-period>
+		<coverage-year>30</coverage-year>
+		<amount>200000.00</amount>
+		<prem>1920.16</prem>
+	</policy>
+	<product>
+		<product-code>5021</product-code>
+		<amount>1920</amount>
+		<prem>1028.16</prem>
+	</product>
+	<product>
+		<product-code>5022</product-code>
+		<amount>200000</amount>
+		<prem>892</prem>
+	</product>
+	<policy-holder>
+		<real-name>测试君2</real-name>
+		<mobile-phone>13923709903</mobile-phone>
+		<gender>0</gender>
+		<birthday>1982-04-15</birthday>
+		<certi-type>1</certi-type>
+		<certi-code>410823198204157917</certi-code>
+		<tel-phone></tel-phone>
+		<email>79440431@qq.com</email>
+		<address>广东省广州市</address>
+		<region-code>440100</region-code>
+		<cert-validate>9999-09-09</cert-validate>
+		<income>3</income>
+	</policy-holder>
+	<life-assured>
+		<real-name>测试</real-name>
+		<gender>0</gender>
+		<certi-type>1</certi-type>
+		<certi-code>110103199907011113</certi-code>
+		<birthday>1999-07-01 00:00:00</birthday>
+		<relation>2</relation>
+		<unit></unit>
+		<country-code>156</country-code>
+		<social-security/>
+		<cert-validate>9999-09-09</cert-validate>
+		<job-code>0901002</job-code>
+	</life-assured>
+	<reAccount-info>
+		<account-type>7</account-type>
+		<bank-area>350100</bank-area>
+		<bank-code>1005</bank-code>
+		<account-no>6217001820018364799</account-no>
+		<accountOwner>测试君2</accountOwner>
+	</reAccount-info>
+</hezhong>

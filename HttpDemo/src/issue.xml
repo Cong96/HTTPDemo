@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Policy>
+  <General>
+    <!--公共信息-->
+    <Funcation>ISSUE</Funcation>
+    <!--操作类型 ISSUE / Surrender （必填ISSUE） -->
+    <IssueTime>2016-12-21T14:15:21</IssueTime>
+    <!--出单时间 FORMAT YYYY-MM-DDTHH24:MI:SS （必填） -->
+    <PolicyNO>0890035717470001</PolicyNO>
+    <!--保单号 Max length:20 （必填，春秋生成） -->
+    <InsuranceCode>4807</InsuranceCode>
+    <!--险种代码/保险产品名称 （必填） -->
+    <InsuranceName>春秋机票航意险</InsuranceName>
+    <!--险种名称 （必填） -->
+    <Plan>A</Plan>
+    <!--款/套餐 Max length:2 （必填） -->
+    <EffectivTime>2016-12-22T00:00:00</EffectivTime>
+    <!--保险启期 （必填） -->
+    <TerminalTime>2016-12-23T23:59:59</TerminalTime>
+    <!--保险止期（必填） -->
+    <Copy>1</Copy>
+    <!--份数 （必填） -->
+    <Currency>CNY</Currency>
+    <!--保费币种 Default:CNY (CNY\USD\EUR\HKD\JPY) （必填） -->
+    <Premium>20.0</Premium>
+    <!--签单保费 （必填）  -->
+    <DepartmentCode>9019193</DepartmentCode>
+    <!--机构代码 Max length: 5 （必填） -->
+    <DocumentType></DocumentType>
+    <!--单证类型编号 Max length: 8 （可空） -->
+    <DocumentSN></DocumentSN>
+    <!--单证流水号 Max length: 20 （可空） -->
+  </General>
+  <Applicant>
+    <!--投保人信息-->
+    <Firstname>许小红</Firstname>
+	<!--姓名 （必填） -->
+    <Lastname></Lastname>
+	<!--姓名（国际时分2段姓名） （可空） -->
+    <Gender>M</Gender>
+    <!--Man:M,Woman:F,Unassigned:X （必填） -->
+    <Birthday>1970-01-02</Birthday>
+    <!--生日 （可空，国内航班未必能采集到生日，若需要必填则给默认值） -->
+    <IDType>01</IDType>
+    <!--证件类别 01-身份证;02-军官证;03-护照;04-驾驶执照;05-返乡证;99-其它,使用编号 （必填） -->
+    <ID>10010119700102011</ID>
+    <!--证件号码 （必填） -->
+    <Phone>66668888</Phone>
+    <!--联系人电话 （必填） -->
+    <Cell>13801380000</Cell>
+    <!--旅客电话 （可空） -->
+    <Zip>100100</Zip>
+    <!--邮编 （可空） -->
+    <Address>No.35 JR Street BJ.China</Address>
+    <!--地址 （可空） -->
+    <Email>raylee@ms.com</Email>
+    <!--email （可空） -->
+  </Applicant>
+  <InsuredList Amount="1">
+    <!--被保险人清单,Amount是被保人数量 春秋固定投1个人 -->
+    <Insured>
+      <!--被保险人信息 （同名字段意义同上） -->
+      <SN>1</SN>
+      <!--序号-->
+      <Firstname>许小红</Firstname>
+      <Lastname></Lastname>
+      <Gender>M</Gender>
+      <Birthday>1970-01-02</Birthday>
+      <IDType>01</IDType>
+      <ID>10010119700102011</ID>
+      <Phone>66668888</Phone>
+      <Cell>13801380000</Cell>
+      <Zip>100100</Zip>
+      <Address>No.35 JR Street BJ.China</Address>
+      <Email>raylee@ms.com</Email>
+      <Relationship>0</Relationship>
+      <!--被保险人与投保人关系 Relationship: 0/Myself 1/Other-->
+    </Insured>
+  </InsuredList>
+  <BeneficiaryList Amount="0" Compulsory="Y" />
+  <!--受益人清单, Amount为受益人数量,Compulsory为是否是法定受益人 春秋固定 Amount="0" Compulsory="Y" 法定受益人 -->
+  <Coverage Source="A">
+    <!-- 保障  Source 款/套餐 General.Plan -->
+	<Conditions></Conditions>
+	<!-- 特别约定 （可空） -->
+    <Disclosure></Disclosure>
+	<!-- 告知 （可空） -->
+  </Coverage>
+  <Agency>
+    <!--代理信息-->
+    <AgentCode>U250000022</AgentCode>
+    <!--代理人编码 （必填） -->
+    <AgentName>春秋航空有限公司</AgentName>
+    <!--代理人名称 （必填） -->
+    <Licence></Licence>
+    <!--许可证号 （可空） -->
+  </Agency>
+  <Addons>
+    <!--附加信息-->
+    <Route>9C1112|null</Route>
+    <!-- 航班号|票号 （可空） -->
+    <IMPK></IMPK>
+    <!--紧急救援卡号 IMPK:emergency rescue service card No. （可空）-->
+  </Addons>
+</Policy>

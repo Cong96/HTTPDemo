@@ -1,0 +1,34 @@
+/WEB-INF/classes/com/weijia/servletcontext/db.properties
+首先第一个"/"代表当前的web应用(这个和JavaSE中读取文件不同，JavaSE中读取文件的话是一定不能以斜杠开头的，不然就报错)，然后是WEB-INF/classes,这个路径我们之前说过，一个web应用发布之后是没有src这样的目录的，我们在第一个手写Servlet的例子中我们也看到了，我们并没有新建一个src文件夹，而是新建一个classes文件夹，在这个文件下面新建一个Servlet的，这点一定要注意；然后就是包名了路径了，因为包名会被映射到文件目录。这样我们就可以读取到了属性文件。
+那么读取src目录中的属性文件就更简单了：
+/WEB-INF/classes/db.properties
+这里千万不要写成：
+/src/db.properties
+一定要记得web应用发布之后是没有src目录的，这里的src目录就相当于是classes目录
+System.getProperty("user.dir"):可以得到当前的工作目录：
+打印结果如下：
+C:\Program Files\Apache Software Foundation\Tomcat 6.0\bin
+可以看到是tomcat的bin目录，那么我们使用相对路径:classes/db.properties这样就相当于绝对路径：
+C:\Program Files\Apache Software Foundation\Tomcat 6.0\bin\classes\db.properties
+所以我们可以到tomcat目录中的bin文件夹下面新建一个classes文件夹，里面新建一个db.properties文件，这时候在运行程序，就不会在报异常了，这样貌似我们想使用FileInputStream来读取文件的话，很是麻烦呀！
+这时候我们就可以使用了getRealPath(String path)方法来获取资源的本地磁盘中的绝对路径：
+打印属性地址：
+
+System.out.println("AbsolutePath:"+context.getRealPath("/WEB-INF/classes/db.properties"));  
+打印结果：
+AbsolutePath:C:\Program Files\Apache Software Foundation\Tomcat 6.0\webapps\ServletDemo\WEB-INF\classes\db.properties
+那么这时候我们就可以通过FileInputStream来读取文件了。
+
+现在还有一个问题就是以后我们在编写Web应用的时候是要遵从多层设计思想的，而且层与层之间不能有侵入行为，层与层之间使用接口进行访问的。比如Service层和Dao层是不能有感染的，就是耦合度要很低的，Servlet就是Service层，那么现在如果想在Dao层中读取文件资源我们该怎么办呢？因为Dao层中没有Servlet，所以没有ServletContext了，那么我们该怎么获取路径呢？有人说可以通过方法的参数形式将ServletContext对象从service层传递到Dao层中，这个方法是可以的，但是这就违背了我们开始说的层与层之间的耦合和互不感染的原则了。那这时候我们该怎么办呀？这时候我们就需要另外一种读取资源的一种方式了，而且这种方式也是可以用于JavaSE中读取文件的。也是一种非常经典的读取资源的方式，这就使用类加载器来读取资源：
+
+Properties dbConfig = new Properties();  
+dbConfig.load(UserDao.class.getClassLoader().getResourceAsStream("com/weijia/servletcontext/db.properties"));  
+System.out.println("url:"+dbconfig.getProperty("url"));  
+System.out.println("username:"+dbconfig.getProperty("username"));  
+System.out.println("password:"+dbconfig.getProperty("password"));  
+
+这样我们就可以不使用ServletContext对象也可以读取到com.weijia.servletcontext包底下的db.properties文件资源了，同样的他也是有一个getRealPath(String path)方法的可以得到本地磁盘的绝对路径，这样我们也可以使用FileInputStream来读取资源了。
+
+其实这种读取资源的方式是：类加载器会把该资源文件和class文件等同一样加载到内存中的，所以问题就出现了：
+1.首先这个资源文件肯定不能太大，因为他是和class文件一起加载到内存中，太大的话，内存就爆了
+2.只要当类加载的时候这个文件才会被加载到内存中，现在假如我们修改了这个db.properties资源文件，保存，但是我们在读取的时候还是之前的资源文件中的内容，原因很简单，因为我们修改的是db.properties资源文件，而没有修改类文件，所以类加载器并不会再次加载类，那么就不会在加载这个修改过的资源文件了，那么这次修改是无效的，所以说这点我们在使用类加载器读取资源的时候一定要注意了。
